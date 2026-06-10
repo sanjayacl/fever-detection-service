@@ -1,0 +1,16 @@
+[Unit]
+Description=Fever Detection Service
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+ExecStart=/usr/bin/java -jar /opt/services/fever-detection-service.jar
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=fever-detection-service
+
+[Install]
+WantedBy=multi-user.target
