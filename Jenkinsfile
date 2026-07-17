@@ -72,10 +72,10 @@ pipeline {
 
     post {
         success {
-            echo "Deployment of ${APP_NAME} succeeded."
+            echo "Deployment of ${env.APP_NAME} succeeded."
         }
         failure {
-            echo "Pipeline failed for ${APP_NAME}. Check the logs above."
+            echo "Pipeline failed for ${env.APP_NAME}. Check the logs above."
         }
     }
 }
