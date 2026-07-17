@@ -14,7 +14,7 @@ pipeline {
         APP_NAME = 'fever-detection-service'
         JAR_NAME = 'fever-detection-service-0.0.1-SNAPSHOT.jar'
         DEPLOY_DIR = '/opt/services'
-        EC2_HOST   = 'ec2-user@3.87.50.40'
+        EC2_HOST   = 'ec2-user@54.160.20.215'
         EC2_CREDS  = 'fever-detection-ec2-ssh-key'   // Jenkins credential ID for the EC2 private key
     }
 
