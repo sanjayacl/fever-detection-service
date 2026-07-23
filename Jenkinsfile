@@ -49,6 +49,7 @@ pipeline {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${EC2_HOST} '
                             sudo mkdir -p ${DEPLOY_DIR}
+                            sudo chown ec2-user:ec2-user ${DEPLOY_DIR}
                             sudo systemctl stop ${APP_NAME} || true
                         '
                     """
