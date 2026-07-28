@@ -19,10 +19,6 @@ public class TemperatureConversionClient {
 
     public TemperatureResponse convertCelsiusToFahrenheit(double celsius) {
         String url = conversionServiceUrl + "/api/temperature/convert?celsius=" + celsius;
-        TemperatureResponse res = new TemperatureResponse();
-        res.setCelsius(10);
-        res.setFahrenheit(20);
-        //return restTemplate.getForObject(url, TemperatureResponse.class);
-        return res;
+        return restTemplate.getForObject(url, TemperatureResponse.class);
     }
 }
