@@ -21,7 +21,7 @@ public class TemperatureConversionClient {
         String url = conversionServiceUrl + "/api/temperature/convert?celsius=" + celsius;
         TemperatureResponse res = new TemperatureResponse();
         res.setCelsius(10);
-        res.setFahrenheit(19);
+        res.setFahrenheit(20);
         //return restTemplate.getForObject(url, TemperatureResponse.class);
         return res;
     }
