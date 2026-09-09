@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -15,5 +15,4 @@ spec:
               service:
                 name: fever-detection-service
                 port:
-                  number: 8082			  
-				
+                  number: 8082
