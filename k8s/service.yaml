@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fever-detection-service
+  labels:
+    app: fever-detection-service
+spec:
+  type: ClusterIP
+  selector:
+    app: fever-detection-service
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 8082

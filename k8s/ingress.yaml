@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fever-detection-service
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  ingressClassName: traefik
+  rules:
+    # TODO: replace with your real domain once you have one, or use the EC2
+    # host's IP with a service like nip.io (e.g. fever.<ec2-public-ip>.nip.io)
+    - host: fever.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fever-detection-service
+                port:
+                  number: 8082

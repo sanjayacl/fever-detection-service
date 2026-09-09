@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fever-detection-service
+  labels:
+    app: fever-detection-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fever-detection-service
+  template:
+    metadata:
+      labels:
+        app: fever-detection-service
+    spec:
+      containers:
+        - name: fever-detection-service
+          image: docker.io/sanjayacl/fever-detection-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8082
+          env:
+            # TODO: replace with temperature-conversion-service's in-cluster
+            # Service DNS name, e.g. http://temperature-conversion-service:8081
+            # (or http://<svc-name>.<namespace>.svc.cluster.local:8081 if it's
+            # deployed in a different namespace).
+            - name: TEMPERATURE_CONVERSION_SERVICE_URL
+              value: "http://<temperature-conversion-service-host>:8081"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            tcpSocket:
+              port: 8082
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8082
+            initialDelaySeconds: 20
+            periodSeconds: 20
