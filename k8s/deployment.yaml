@@ -22,12 +22,8 @@ spec:
             - name: http
               containerPort: 8082
           env:
-            # TODO: replace with temperature-conversion-service's in-cluster
-            # Service DNS name, e.g. http://temperature-conversion-service:8081
-            # (or http://<svc-name>.<namespace>.svc.cluster.local:8081 if it's
-            # deployed in a different namespace).
             - name: TEMPERATURE_CONVERSION_SERVICE_URL
-              value: "http://<temperature-conversion-service-host>:8081"
+              value: "http://temperature-conversion-service:8081"
           resources:
             requests:
               cpu: 100m

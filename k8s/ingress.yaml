@@ -7,9 +7,6 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    # TODO: replace with your real domain once you have one, or use the EC2
-    # host's IP with a service like nip.io (e.g. fever.<ec2-public-ip>.nip.io)
-    - host: fever.local
       http:
         paths:
           - path: /
@@ -18,4 +15,5 @@ spec:
               service:
                 name: fever-detection-service
                 port:
-                  number: 8082
+                  number: 8082			  
+				
